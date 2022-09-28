@@ -6,6 +6,6 @@ type Props = ButtonHTMLAttributes<HTMLButtonElement> &{
 
 export function Button({children, ...rest }: Props){
     return(
-        <button type="button" className="btn" {...rest}>{children}</button>
+        <button className="btn" {...rest}>{children}</button>
     )
 }
