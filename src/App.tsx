@@ -1,7 +1,7 @@
 import {useState,FormEvent} from 'react'
 
-import {Title} from './Title'
-import {Button} from './Button'
+import {Title} from './components/Title'
+import {Button} from './components/Button'
 
 function App() {
   const [count,setCount] = useState(0)
