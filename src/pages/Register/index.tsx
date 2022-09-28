@@ -1,5 +1,9 @@
 export default function Register(){
     return(
-        <h1>Cadastro de pedidos</h1>
+        <main>
+            <section>
+                <h1>Pedidos Cadastrados</h1>
+            </section>
+        </main>
     )
 }

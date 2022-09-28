@@ -1,11 +1,12 @@
 import {ReactNode,ButtonHTMLAttributes} from 'react'
+import "./styles.css"
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> &{
     children: ReactNode
 }
 
-export function Button({children, ...rest }: Props){
+export default function Button({children, ...rest }: Props){
     return(
-        <button className="btn" {...rest}>{children}</button>
+        <button {...rest}>{children}</button>
     )
 }

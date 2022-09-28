@@ -1,7 +1,9 @@
 export default function Complete(){
     return(
-        <div>
-            dsdasdsadsad
-        </div>
+        <main>
+            <section>
+                <h1>Pedidos Entregues</h1>
+            </section>
+        </main>
     )
 }
