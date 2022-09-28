@@ -5,23 +5,22 @@ import {
   Link
 } from "react-router-dom"
 
+import Header from "./components/Header"
 import Home from "./pages/Home"
 import Register from "./pages/Register"
+import Complete from "./pages/Complete"
 import "./styles/global.css"
 
 function App() {
-  
   return (
     <BrowserRouter>
-      
-      <Link to="/register">Register</Link>
-      
+      <Header/>
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/register" element={<Register/>}/>
+        <Route path="pedidos-entregues" element={<Complete/>}/>
+        <Route path="cadastrar-pedidos" element={<Register/>}/>
       </Routes>
     </BrowserRouter>
-  
   );
 }
 
