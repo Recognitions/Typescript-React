@@ -1,16 +1,11 @@
-import {ReactNode} from 'react'
+import {ReactNode,ButtonHTMLAttributes} from 'react'
 
-type Props = {
+type Props = ButtonHTMLAttributes<HTMLButtonElement> &{
     children: ReactNode
 }
 
-export function Button({children}: Props){
-
-    function showAlert(){
-        alert("Mostrando alerta")
-    }
-    
+export function Button({children, ...rest }: Props){
     return(
-        <button type="button" className="btn" onClick={showAlert}>{children}</button>
+        <button type="button" className="btn" {...rest}>{children}</button>
     )
 }
