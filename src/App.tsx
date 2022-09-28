@@ -1,49 +1,27 @@
-import {useState,FormEvent} from 'react'
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom"
 
-import {Title} from './components/Title'
-import {Button} from './components/Button'
+import Home from "./pages/Home"
+import Register from "./pages/Register"
+import "./styles/global.css"
 
 function App() {
-  const [count,setCount] = useState(0)
-
-  function increase(){
-    setCount(count+1)
-    console.log(count)
-  }
   
-  const [todos, setTodos] = useState<string[]>([])
-  const [todosText, setTodosText] = useState("")
-
-  function createTodo(event:FormEvent){
-    event.preventDefault()
-    setTodos([...todos,todosText])
-    setTodosText("")
-  }
   return (
-    <div>
-      <Button onClick={increase}>Clicar</Button>
-      <b>{count}</b>
-      <div>
-        <form method="post" onSubmit={createTodo}>
-          <input 
-            id="todoI"
-            type="text"
-            value={todosText}
-            onChange={(event)=>{setTodosText(event.target.value)}}
-          />
-          <Button type="submit">Criar To-do</Button>
-        </form>
-        <ul>
-          {
-            todos.map((todo,index)=>{
-              return (
-                <li key={index}><input type="checkbox"/>{todo}</li>
-              )
-            })
-          }
-        </ul>
-      </div>
-    </div>
+    <BrowserRouter>
+      
+      <Link to="/register">Register</Link>
+      
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/register" element={<Register/>}/>
+      </Routes>
+    </BrowserRouter>
+  
   );
 }
 
