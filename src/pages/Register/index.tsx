@@ -15,8 +15,10 @@ export function Register(){
         const response = await api.post('/orders',{
             description,price,optional
         })
-
-        console.table(response)
+        setDescription("")
+        setPrice("")
+        setOptional("")
+        console.log(response)
     }
 
     return(
