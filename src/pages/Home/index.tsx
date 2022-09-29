@@ -26,7 +26,8 @@ export function Home(){
         async function fetchOrders(){
             try{
                 const response = await api.get('/orders')
-                console.log(response.data)
+                setOrders(response.data)
+                console.log(orders)
             }catch(error){
                 console.log(error)
                 Swal.fire({
@@ -55,15 +56,17 @@ export function Home(){
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Baião de 2</td>
-                                <td>R$12,23</td>
-                                <td>Bem quente</td>
-                            </tr><tr>
-                                <td>Baião de 2</td>
-                                <td>R$12,23</td>
-                                <td>Bem quente</td>
-                            </tr>
+                            {
+                                orders.map((order)=>{
+                                    return(
+                                        <tr key={order.id}>
+                                            <td>{order.description}</td>
+                                            <td>{order.price}</td>
+                                            <td>{order.optional}</td>
+                                        </tr>
+                                    )
+                                })
+                            }
                         </tbody>
                     </table>
             </section>
