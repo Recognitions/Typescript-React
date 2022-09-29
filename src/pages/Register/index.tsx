@@ -1,5 +1,6 @@
 import {FormEvent, useState} from "react"
 import {api} from "../../services/api"
+import Swal from "sweetalert2"
 import "./styles.css"
 import { Button } from "../../components/Button"
 
@@ -18,7 +19,13 @@ export function Register(){
         setDescription("")
         setPrice("")
         setOptional("")
-        console.log(response)
+        
+        Swal.fire({
+            icon:"success",
+            title:"Enviado com sucesso",
+            text:"Pedido cadastrado com sucesso"
+        })
+
     }
 
     return(
