@@ -27,7 +27,6 @@ export function Home(){
             try{
                 const response = await api.get('/orders')
                 setOrders(response.data)
-                console.log(orders)
             }catch(error){
                 console.log(error)
                 Swal.fire({
