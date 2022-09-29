@@ -1,7 +1,7 @@
 import "./styles.css"
-import Button from "../../components/Button"
+import {Button} from "../../components/Button"
 
-export default function Home(){
+export function Home(){
     return(
         <main>
             <section className="page-control">

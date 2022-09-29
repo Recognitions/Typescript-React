@@ -1,4 +1,4 @@
-export default function Register(){
+export function Register(){
     return(
         <main>
             <section>

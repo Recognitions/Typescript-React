@@ -1,4 +1,4 @@
-export default function Complete(){
+export function Complete(){
     return(
         <main>
             <section>

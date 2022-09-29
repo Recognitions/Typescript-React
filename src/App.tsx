@@ -1,14 +1,13 @@
 import {
   BrowserRouter,
   Routes,
-  Route,
-  Link
+  Route
 } from "react-router-dom"
 
-import Header from "./components/Header"
-import Home from "./pages/Home"
-import Register from "./pages/Register"
-import Complete from "./pages/Complete"
+import {Header} from "./components/Header"
+import {Home} from "./pages/Home"
+import {Register} from "./pages/Register"
+import {Complete} from "./pages/Complete"
 import "./styles/global.css"
 
 function App() {

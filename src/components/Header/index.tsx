@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom"
 import "./styles.css"
 
-export default function Header(){
+export function Header(){
     return(
         <header>
             <nav>
