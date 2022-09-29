@@ -14,7 +14,7 @@ export function Register(){
         event.preventDefault()
 
         const response = await api.post('/orders',{
-            description,price,optional
+            description,price,optional,status:0
         })
         setDescription("")
         setPrice("")
@@ -38,7 +38,8 @@ export function Register(){
                     <input
                         placeholder="Descreva o pedido"
                         onChange={(event)=>{setDescription(event.target.value)}} 
-                        value={description} 
+                        value={description}
+                        required
                     />
                 </div>
                 <div className="formControl">
@@ -46,15 +47,17 @@ export function Register(){
                     <input
                         placeholder="Defina um preço"
                         onChange={(event)=>{setPrice(event.target.value)}} 
-                        value={price} 
+                        value={price}
+                        required
                     />
                 </div>
                 <div className="formControl">
-                    <label htmlFor="opcional">Observações (opicional) </label>
+                    <label htmlFor="opcional">Observações (opcional)</label>
                     <input
                         placeholder="Observações sobre o pedido"
                         onChange={(event)=>{setOptional(event.target.value)}} 
-                        value={optional} 
+                        value={optional}
+                        required
                     />
                 </div>
                 
