@@ -1,17 +1,42 @@
-import { useEffect } from 'react'
+import Swal from 'sweetalert2'
+import { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom"
 import "./styles.css"
 import {Button} from "../../components/Button"
+import { api } from '../../services/api'
+
+type Order = {
+    id: number;
+    description: string;
+    price: string;
+    optional: string;
+    status: number;
+}
 
 export function Home(){
-    const  navigate = useNavigate()
+    const navigate = useNavigate()
+
+    const [orders, setOrders] = useState<Order[]>([])
 
     function nevegateToRegister(){
         navigate('cadastrar-pedidos')
     }
 
     useEffect(()=>{
-
+        async function fetchOrders(){
+            try{
+                const response = await api.get('/orders')
+                console.log(response.data)
+            }catch(error){
+                console.log(error)
+                Swal.fire({
+                    icon:"error",
+                    title:"Algo deu errado",
+                    text:"Impossível renderizar produtos!"
+                })
+            }
+        }
+        fetchOrders()
     },[])
 
     return(

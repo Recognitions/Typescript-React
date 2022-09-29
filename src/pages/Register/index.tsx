@@ -12,19 +12,27 @@ export function Register(){
     
     async function registerOrder(event:FormEvent){
         event.preventDefault()
-
-        const response = await api.post('/orders',{
-            description,price,optional,status:0
-        })
-        setDescription("")
-        setPrice("")
-        setOptional("")
-        
-        Swal.fire({
-            icon:"success",
-            title:"Enviado com sucesso",
-            text:"Pedido cadastrado com sucesso"
-        })
+        try{
+            const response = await api.post('/orders',{
+                description,price,optional,status:0
+            })
+            setDescription("")
+            setPrice("")
+            setOptional("")
+            
+            Swal.fire({
+                icon:"success",
+                title:"Enviado com sucesso",
+                text:"Pedido cadastrado com sucesso"
+            })
+        }catch(error){
+            console.log(error)
+            Swal.fire({
+                icon:"error",
+                title:"Algo deu errado",
+                text:"Impossível cadastrar produto!"
+            })
+        }
 
     }
 
