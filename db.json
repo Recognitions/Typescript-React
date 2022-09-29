@@ -20,6 +20,13 @@
       "optional": "ksdkfsd",
       "status": 0,
       "id": 3
+    },
+    {
+      "description": "React",
+      "price": "9999",
+      "optional": "Bom demais",
+      "status": 0,
+      "id": 4
     }
   ]
 }
