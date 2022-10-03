@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom"
 import "./styles.css"
 import {Button} from "../../components/Button"
 import { api } from '../../services/api'
+import {FaEdit} from 'react-icons/fa'
+import {Link} from 'react-router-dom'
 
 type Order = {
     id: number;
@@ -52,6 +54,7 @@ export function Home(){
                                 <th>Descrição</th>
                                 <th>Preço</th>
                                 <th>Observações</th>
+                                <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,6 +65,13 @@ export function Home(){
                                             <td>{order.description}</td>
                                             <td>{order.price}</td>
                                             <td>{order.optional}</td>
+                                            <td>
+                                                <Link to={'/editar-pedido/'+order.id} className='edit-button'>
+                                                    <i>
+                                                        <FaEdit/>
+                                                    </i>
+                                                </Link>
+                                            </td>
                                         </tr>
                                     )
                                 })

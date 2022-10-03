@@ -11,9 +11,22 @@
     box-shadow: 0px 5px 20px 1px rgba(0,0,0,0.2);
 }
 
-.table-container table th,.table-container table td{
-padding: 10px; border-top: 1px solid #333;
+.table-container table th,
+.table-container table td
+{padding: 10px; border-top: 1px solid #333;
 border-left: 1px solid #333;}
 .table-container table th:first-child, 
-.table-container table td:first-child{border-left: none;}
-.table-container table th{border-top: none;}
+.table-container table td:first-child
+{border-left: none;}
+.table-container table th
+{border-top: none;}
+
+.edit-button{
+    color: #f8f8f8;
+    background-color: orange;
+    padding: 10px;
+    text-decoration: none;
+}
+.edit-button:hover,.edit-button:focus{
+    filter: brightness(1.2)
+}
