@@ -26,6 +26,7 @@ border-left: 1px solid #333;}
     background-color: orange;
     padding: 10px;
     text-decoration: none;
+    border-radius: 10px;
 }
 .edit-button:hover,.edit-button:focus{
     filter: brightness(1.2)
