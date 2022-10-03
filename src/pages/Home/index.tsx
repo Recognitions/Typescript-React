@@ -18,7 +18,7 @@ export function Home(){
 
     const [orders, setOrders] = useState<Order[]>([])
 
-    function nevegateToRegister(){
+    function navigateToRegister(){
         navigate('cadastrar-pedidos')
     }
 
@@ -43,7 +43,7 @@ export function Home(){
         <main>
             <section className="page-control">
                 <h2 className="title">Pedidos Pendentes</h2>
-                <Button onClick={nevegateToRegister}>Cadastrar pedido</Button>
+                <Button onClick={navigateToRegister}>Cadastrar pedido</Button>
             </section>
             <section className="table-container">
                 <table>
