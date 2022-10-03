@@ -1,6 +1,8 @@
+import { FormHTMLAttributes } from "react"
 import { Button } from "../Button"
+import "./styles.css"
 
-type FormProps = {
+type FormProps = FormHTMLAttributes<HTMLFormElement> & {
     description: string;
     setDescription: (description: string)=>void;
     price: string;
@@ -15,10 +17,11 @@ export function Form({
     price,
     setPrice,
     optional,
-    setOptional
+    setOptional,
+    ...rest
 }: FormProps){
     return(
-        <form className="formMain">
+        <form className="formMain" {...rest}>
             <div className="formControl">
                 <label htmlFor="description">Descrição</label>
                 <input

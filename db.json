@@ -34,6 +34,13 @@
       "optional": "Nao",
       "status": 0,
       "id": 5
+    },
+    {
+      "description": "Goiaba",
+      "price": "192",
+      "optional": "Boa demais",
+      "status": 0,
+      "id": 6
     }
   ]
 }

@@ -43,13 +43,13 @@ export function Register(){
             <PageControl title="Pedidos Cadastrados"/>
             <section>
                 <Form 
+                    onSubmit={registerOrder}
                     description={description}
                     setDescription={setDescription}
                     price={price}
                     setPrice={setPrice}
                     optional={optional}
                     setOptional={setOptional}
-
                 />
             </section>
         </main>
