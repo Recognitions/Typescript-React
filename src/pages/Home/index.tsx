@@ -6,6 +6,7 @@ import {Button} from "../../components/Button"
 import { api } from '../../services/api'
 import {FaEdit} from 'react-icons/fa'
 import {Link} from 'react-router-dom'
+import {PageControl} from "../../components/PageControl"
 
 type Order = {
     id: number;
@@ -45,8 +46,12 @@ export function Home(){
         <main>
             <section className="page-control">
                 <h2 className="title">Pedidos Pendentes</h2>
-                <Button onClick={navigateToRegister}>Cadastrar pedido</Button>
             </section>
+            <PageControl title="Pedidos pendentes">
+                <Button onClick={navigateToRegister}>Cadastrar pedido</Button>
+            
+            </PageControl>
+            
             <section className="table-container">
                 <table>
                         <thead>
