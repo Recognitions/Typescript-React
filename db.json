@@ -8,10 +8,9 @@
       "id": 1
     },
     {
-      "description": "Opa",
+      "description": "Pacajus",
       "price": "192",
       "optional": "Nao",
-      "status": 0,
       "id": 2
     },
     {
@@ -22,7 +21,7 @@
       "id": 3
     },
     {
-      "description": "sadfsadfsadfsda",
+      "description": "Gato de botas",
       "price": "4213",
       "optional": "Bom demais",
       "id": 4
