@@ -3,7 +3,7 @@ import {ReactNode} from "react"
 
 type Props = {
     title: String,
-    children: ReactNode
+    children?: ReactNode
 }
 
 export function PageControl({title, children}: Props){

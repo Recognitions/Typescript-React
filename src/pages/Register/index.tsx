@@ -3,6 +3,7 @@ import {api} from "../../services/api"
 import Swal from "sweetalert2"
 import "./styles.css"
 import { Button } from "../../components/Button"
+import {PageControl} from "../../components/PageControl"
 
 export function Register(){
 
@@ -38,8 +39,8 @@ export function Register(){
 
     return(
         <main>
+            <PageControl title="Pedidos Cadastrados"/>
             <section>
-                <h1>Pedidos Cadastrados</h1>
                 <form className="formMain" onSubmit={registerOrder}>
                 <div className="formControl">
                     <label htmlFor="description">Descrição</label>

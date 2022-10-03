@@ -44,12 +44,8 @@ export function Home(){
 
     return(
         <main>
-            <section className="page-control">
-                <h2 className="title">Pedidos Pendentes</h2>
-            </section>
             <PageControl title="Pedidos pendentes">
                 <Button onClick={navigateToRegister}>Cadastrar pedido</Button>
-            
             </PageControl>
             
             <section className="table-container">
