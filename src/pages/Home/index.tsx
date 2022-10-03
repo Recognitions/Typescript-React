@@ -68,9 +68,7 @@ export function Home(){
                                             <td>{order.optional}</td>
                                             <td>
                                                 <Link to={`/editar-pedido/${order.id}`} className='edit-button'>
-                                                    <i>
-                                                        <FaEdit/>
-                                                    </i>
+                                                    <FaEdit/>
                                                 </Link>
                                             </td>
                                         </tr>
