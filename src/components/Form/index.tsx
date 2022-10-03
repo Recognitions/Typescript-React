@@ -49,10 +49,7 @@ export function Form({
                     required
                 />
             </div>
-            
-            <Button>
-                Botão
-            </Button>
+            <Button>Confirmar</Button>
         </form>
     )
 }
