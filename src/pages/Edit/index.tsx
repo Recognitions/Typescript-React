@@ -1,10 +1,11 @@
 import { PageControl } from "../../components/PageControl"
-import {useState, useEffect} from "react"
+import {useState, useEffect, FormEvent} from "react"
 import { Form } from "../../components/Form"
 import Swal from "sweetalert2"
+import { api } from "../../services/api"
 
 export function Edit(){
-
+    const url = (window.location.href).split("/")[4]
     const [description, setDescription] = useState("")
     const [price, setPrice] = useState("")
     const [optional, setOptional] = useState("")
@@ -12,13 +13,10 @@ export function Edit(){
     useEffect(()=>{
         async function fetchOrder(){
             try{
-
-                
-                Swal.fire({
-                    icon:"success",
-                    title:"Enviado com sucesso",
-                    text:"Pedido cadastrado com sucesso"
-                })
+                const response = await api.get(`/orders/${url}`)
+                setDescription(response.data.description)
+                setPrice(response.data.price)
+                setOptional(response.data.optional)
             }catch(error){
                 console.log(error)
                 Swal.fire({
@@ -31,8 +29,25 @@ export function Edit(){
         fetchOrder()
     },[])
 
-    function editOrder(){
-
+    async function editOrder(event: FormEvent){
+        event.preventDefault()
+        try{
+            const response = await api.put(`/orders/${url}`,{
+                description,price,optional
+            })
+            Swal.fire({
+                icon:"success",
+                title:"Alterado com sucesso",
+                text:"Dados do paciente alterados com sucesso!"
+            })
+        }catch(error){
+            console.log(error)
+            Swal.fire({
+                icon:"error",
+                title:"Algo deu errado",
+                text:"Impossível cadastrar produto!"
+            })
+        }
     }
     return(
         <main>
