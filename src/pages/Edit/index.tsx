@@ -1,17 +1,17 @@
 import { PageControl } from "../../components/PageControl"
 import {useState, useEffect, FormEvent} from "react"
-import { useParams } from "react-router-dom"
+import { useParams,useNavigate } from "react-router-dom"
 import { Form } from "../../components/Form"
 import Swal from "sweetalert2"
 import { api } from "../../services/api"
 
 export function Edit(){
     const params = useParams()
+    const navigate = useNavigate()
     const id = params.id
     const [description, setDescription] = useState("")
     const [price, setPrice] = useState("")
     const [optional, setOptional] = useState("")
-
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(()=>{
@@ -44,14 +44,21 @@ export function Edit(){
             Swal.fire({
                 icon:"success",
                 title:"Alterado com sucesso",
-                text:"Dados do paciente alterados com sucesso!"
+                text:"Dados do paciente alterados com sucesso!",
+                showConfirmButton: false,
+                allowOutsideClick: false,
+                timer: 1500
             })
+
+            setTimeout(()=>{
+                navigate("/")
+            },1600)
         }catch(error){
-            console.log(error)
+            console.error(error)
             Swal.fire({
                 icon:"error",
                 title:"Algo deu errado",
-                text:"Impossível cadastrar produto!"
+                text:"Impossível atualizar os dados do produto!"
             })
         }
     }
@@ -72,6 +79,7 @@ export function Edit(){
                             setPrice={setPrice}
                             optional={optional}
                             setOptional={setOptional}
+                            title="Confirmar alterações"
                         />
                     )
                 }

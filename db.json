@@ -2,14 +2,13 @@
   "orders": [
     {
       "description": "lapis",
-      "price": "12",
+      "price": "45674567",
       "optional": "Preto",
-      "status": 0,
       "id": 1
     },
     {
       "description": "Pacajus",
-      "price": "192",
+      "price": "99999999999",
       "optional": "Nao",
       "id": 2
     },

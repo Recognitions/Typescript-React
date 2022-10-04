@@ -9,6 +9,8 @@ type FormProps = FormHTMLAttributes<HTMLFormElement> & {
     setPrice: (price: string)=>void;
     optional: string;
     setOptional: (optional: string)=>void;
+
+    title?: string;
 }
 
 export function Form({
@@ -18,6 +20,7 @@ export function Form({
     setPrice,
     optional,
     setOptional,
+    title = "Cadastrar",
     ...rest
 }: FormProps){
     return(
@@ -49,7 +52,7 @@ export function Form({
                     required
                 />
             </div>
-            <Button>Confirmar</Button>
+            <Button>{title}</Button>
         </form>
     )
 }
