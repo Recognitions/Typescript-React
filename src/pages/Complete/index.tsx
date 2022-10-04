@@ -1,9 +1,7 @@
 import "../Home/styles.css"
 import Swal from 'sweetalert2'
 import {PageControl} from "../../components/PageControl"
-import {useEffect,useState} from 'react'
 import {api} from '../../services/api'
-import {Order} from '../../@types/order'
 import {Link} from 'react-router-dom'
 import {MdDelete} from 'react-icons/md'
 import { useOrders } from "../../hooks/useOrders"
