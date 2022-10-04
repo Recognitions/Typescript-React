@@ -7,9 +7,7 @@ import {MdDelete} from 'react-icons/md'
 import { useOrders } from "../../hooks/useOrders"
 
 export function Complete(){
-
     const {orders,isLoading,fetchOrders} = useOrders()    
-
     function deleteOrder(id:number){
         try{
             Swal.fire({
