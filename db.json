@@ -7,11 +7,18 @@
       "id": 1
     },
     {
-      "description": "Consutoria",
-      "price": "120",
-      "optional": "Povão do povo galão",
+      "description": "Batata Doce",
+      "price": "R$2,51",
+      "optional": "Aproximadamente 360g.",
       "status": 0,
-      "id": 8
+      "id": 2
+    },
+    {
+      "description": "Farofa Yoki",
+      "price": "R$4,15",
+      "optional": "Farofa Pronta De Mandioca Temperada Yoki 500g",
+      "status": 0,
+      "id": 3
     }
   ]
 }

@@ -2,7 +2,6 @@ import {FormEvent, useState} from "react"
 import {api} from "../../services/api"
 import Swal from "sweetalert2"
 import "./styles.css"
-import { Button } from "../../components/Button"
 import {PageControl} from "../../components/PageControl"
 import { Form } from "../../components/Form"
 
@@ -24,15 +23,15 @@ export function Register(){
             
             Swal.fire({
                 icon:"success",
-                title:"Enviado com sucesso",
-                text:"Pedido cadastrado com sucesso"
+                title:"Enviado com sucesso!",
+                text:"Pedido cadastrado com sucesso."
             })
         }catch(error){
             console.log(error)
             Swal.fire({
                 icon:"error",
-                title:"Algo deu errado",
-                text:"Impossível cadastrar produto!"
+                title:"Algo deu errado!",
+                text:"Impossível cadastrar produto."
             })
         }
 

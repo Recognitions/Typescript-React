@@ -23,10 +23,6 @@ export function Home(){
     const [orders, setOrders] = useState<Order[]>([])
     const [isLoading, setIsLoading] = useState(true)
 
-    function navigateToRegister(){
-        navigate('cadastrar-pedidos')
-    }
-
     async function fetchOrders(){
         try{
             const response = await api.get('/orders')
@@ -80,7 +76,7 @@ export function Home(){
     return(
         <main>
             <PageControl title="Pedidos pendentes">
-                <Button onClick={navigateToRegister}>Cadastrar pedido</Button>
+                <Button onClick={()=>navigate('cadastrar-pedidos')}>Cadastrar pedido</Button>
             </PageControl>
             
             <section className="table-container">
