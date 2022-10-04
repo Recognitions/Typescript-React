@@ -12,13 +12,17 @@ export function Edit(){
     const [price, setPrice] = useState("")
     const [optional, setOptional] = useState("")
 
+    const [isLoading, setIsLoading] = useState(true)
+
     useEffect(()=>{
         async function fetchOrder(){
             try{
-                const response = await api.get(`/orders/${id}`)
-                setDescription(response.data.description)
-                setPrice(response.data.price)
-                setOptional(response.data.optional)
+                const {data} = await api.get(`/orders/${id}`)
+                setDescription(data.description)
+                setPrice(data.price)
+                setOptional(data.optional)
+
+                setIsLoading(false)
             }catch(error){
                 console.log(error)
                 Swal.fire({
@@ -55,15 +59,23 @@ export function Edit(){
         <main>
             <PageControl title="Editar produto"/>
             <section>
-                <Form 
-                    onSubmit={editOrder}
-                    description={description}
-                    setDescription={setDescription}
-                    price={price}
-                    setPrice={setPrice}
-                    optional={optional}
-                    setOptional={setOptional}
-                />
+                {isLoading ? (
+                    <div>
+                        <span><img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Loading_2.gif"/></span>
+                    </div>
+                ):(
+                    <Form 
+                        onSubmit={editOrder}
+                        description={description}
+                        setDescription={setDescription}
+                        price={price}
+                        setPrice={setPrice}
+                        optional={optional}
+                        setOptional={setOptional}
+                    />
+                )
+                    
+                }
             </section>
         </main>
     )
