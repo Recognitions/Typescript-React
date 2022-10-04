@@ -39,7 +39,7 @@ export function Edit(){
         event.preventDefault()
         try{
             const response = await api.put(`/orders/${id}`,{
-                description,price,optional
+                description,price,optional,status:0
             })
             Swal.fire({
                 icon:"success",

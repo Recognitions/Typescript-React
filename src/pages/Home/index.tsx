@@ -1,22 +1,15 @@
-import Swal from 'sweetalert2'
-import { useEffect, useState } from 'react'
-import { useNavigate } from "react-router-dom"
 import "./styles.css"
+import Swal from 'sweetalert2'
+import {useEffect,useState} from 'react'
+import {useNavigate} from "react-router-dom"
 import {Button} from "../../components/Button"
-import { api } from '../../services/api'
+import {api} from '../../services/api'
 import {FaEdit} from 'react-icons/fa'
 import {MdDelete} from 'react-icons/md'
 import {TbTruckDelivery} from 'react-icons/tb'
 import {Link} from 'react-router-dom'
 import {PageControl} from "../../components/PageControl"
-
-type Order = {
-    id: number;
-    description: string;
-    price: string;
-    optional: string;
-    status: number;
-}
+import {Order} from '../../@types/order'
 
 export function Home(){
     const navigate = useNavigate()
@@ -33,8 +26,8 @@ export function Home(){
             console.log(error)
             Swal.fire({
                 icon:"error",
-                title:"Algo deu errado",
-                text:"Impossível renderizar produtos!"
+                title:"Algo deu errado!",
+                text:"Impossível renderizar produtos."
             })
         }
     }
@@ -68,8 +61,28 @@ export function Home(){
             console.error(error)
             Swal.fire({
                 icon:"error",
-                title:"Algo deu errado",
-                text:"Impossível deletar produto!"
+                title:"Algo deu errado!",
+                text:"Impossível deletar produto."
+            })
+        }
+    }
+
+    async function deliveryOrder(order:Order){
+        order.status= 1
+        try{
+            await api.put(`/orders/${order.id}`,order)
+            Swal.fire({
+                icon:"success",
+                title:"Pedido entregue!",
+                text:"Pedido entregue com sucesso."
+            })
+            fetchOrders()
+        }catch(error){
+            console.error(error)
+            Swal.fire({
+                icon:"error",
+                title:"Algo deu errado!",
+                text:"Impossível entregar produto"
             })
         }
     }
@@ -92,9 +105,9 @@ export function Home(){
                         </thead>
                         <tbody>
                             {isLoading ? (
-                                    <tr><td></td><td></td><td><img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Loading_2.gif"/></td><td></td></tr>
+                                    <tr><td><img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Loading_2.gif"/></td></tr>
                                 ) : (
-                                    orders.map((order)=>{
+                                    orders.filter((order)=>order.status==0).map((order)=>{
                                         return(
                                             <tr key={order.id}>
                                                 <td>{order.description}</td>
@@ -107,7 +120,7 @@ export function Home(){
                                                     <Link onClick={()=>deleteOrder(order.id)} to="#" className="action-button delete-button">
                                                         <MdDelete/>
                                                     </Link>
-                                                    <Link to="#" className="action-button delivery-button">
+                                                    <Link onClick={()=>deliveryOrder(order)} to="#" className="action-button delivery-button">
                                                         <TbTruckDelivery/>
                                                     </Link>
                                                 </td>

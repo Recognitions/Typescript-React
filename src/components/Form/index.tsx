@@ -49,7 +49,6 @@ export function Form({
                     placeholder="Observações sobre o pedido"
                     onChange={(event)=>{setOptional(event.target.value)}} 
                     value={optional}
-                    required
                 />
             </div>
             <Button>{title}</Button>
