@@ -5,6 +5,7 @@ import "./styles.css"
 import {Button} from "../../components/Button"
 import { api } from '../../services/api'
 import {FaEdit} from 'react-icons/fa'
+import {MdDelete} from 'react-icons/md'
 import {Link} from 'react-router-dom'
 import {PageControl} from "../../components/PageControl"
 
@@ -26,23 +27,42 @@ export function Home(){
         navigate('cadastrar-pedidos')
     }
 
-    useEffect(()=>{
-        async function fetchOrders(){
-            try{
-                const response = await api.get('/orders')
-                setOrders(response.data)
-                setIsLoading(false)
-            }catch(error){
-                console.log(error)
-                Swal.fire({
-                    icon:"error",
-                    title:"Algo deu errado",
-                    text:"Impossível renderizar produtos!"
-                })
-            }
+    async function fetchOrders(){
+        try{
+            const response = await api.get('/orders')
+            setOrders(response.data)
+            setIsLoading(false)
+        }catch(error){
+            console.log(error)
+            Swal.fire({
+                icon:"error",
+                title:"Algo deu errado",
+                text:"Impossível renderizar produtos!"
+            })
         }
+    }
+    useEffect(()=>{
         fetchOrders()
     },[])
+
+    async function deleteOrder(id:number){
+        try{
+            const response = await api.delete(`/orders/${id}`)
+            Swal.fire({
+                icon:"success",
+                title:"Deletado com sucesso",
+                text:"O seu produto foi deletado!"
+            })
+            fetchOrders()
+        }catch(error){
+            console.error(error)
+            Swal.fire({
+                icon:"error",
+                title:"Algo deu errado",
+                text:"Impossível deletar produto!"
+            })
+        }
+    }
 
     return(
         <main>
@@ -70,9 +90,12 @@ export function Home(){
                                                 <td>{order.description}</td>
                                                 <td>{order.price}</td>
                                                 <td>{order.optional}</td>
-                                                <td>
-                                                    <Link to={`/editar-pedido/${order.id}`} className='edit-button'>
+                                                <td className='button-area'>
+                                                    <Link to={`/editar-pedido/${order.id}`} className='action-button edit-button'>
                                                         <FaEdit/>
+                                                    </Link>
+                                                    <Link onClick={()=>deleteOrder(order.id)} to="#" className="action-button delete-button">
+                                                        <MdDelete/>
                                                     </Link>
                                                 </td>
                                             </tr>
