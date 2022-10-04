@@ -20,6 +20,7 @@ export function Home(){
     const navigate = useNavigate()
 
     const [orders, setOrders] = useState<Order[]>([])
+    const [isLoading, setIsLoading] = useState(true)
 
     function navigateToRegister(){
         navigate('cadastrar-pedidos')
@@ -30,6 +31,7 @@ export function Home(){
             try{
                 const response = await api.get('/orders')
                 setOrders(response.data)
+                setIsLoading(false)
             }catch(error){
                 console.log(error)
                 Swal.fire({
@@ -59,21 +61,24 @@ export function Home(){
                             </tr>
                         </thead>
                         <tbody>
-                            {
-                                orders.map((order)=>{
-                                    return(
-                                        <tr key={order.id}>
-                                            <td>{order.description}</td>
-                                            <td>{order.price}</td>
-                                            <td>{order.optional}</td>
-                                            <td>
-                                                <Link to={`/editar-pedido/${order.id}`} className='edit-button'>
-                                                    <FaEdit/>
-                                                </Link>
-                                            </td>
-                                        </tr>
-                                    )
-                                })
+                            {isLoading ? (
+                                    <tr><td></td><td></td><td><img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Loading_2.gif"/></td><td></td></tr>
+                                ) : (
+                                    orders.map((order)=>{
+                                        return(
+                                            <tr key={order.id}>
+                                                <td>{order.description}</td>
+                                                <td>{order.price}</td>
+                                                <td>{order.optional}</td>
+                                                <td>
+                                                    <Link to={`/editar-pedido/${order.id}`} className='edit-button'>
+                                                        <FaEdit/>
+                                                    </Link>
+                                                </td>
+                                            </tr>
+                                        )
+                                    })
+                                )
                             }
                         </tbody>
                     </table>

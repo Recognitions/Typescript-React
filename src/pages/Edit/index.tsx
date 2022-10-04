@@ -60,21 +60,20 @@ export function Edit(){
             <PageControl title="Editar produto"/>
             <section>
                 {isLoading ? (
-                    <div>
-                        <span><img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Loading_2.gif"/></span>
-                    </div>
-                ):(
-                    <Form 
-                        onSubmit={editOrder}
-                        description={description}
-                        setDescription={setDescription}
-                        price={price}
-                        setPrice={setPrice}
-                        optional={optional}
-                        setOptional={setOptional}
-                    />
-                )
-                    
+                        <div>
+                            <span><img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Loading_2.gif"/></span>
+                        </div>
+                    ):(
+                        <Form 
+                            onSubmit={editOrder}
+                            description={description}
+                            setDescription={setDescription}
+                            price={price}
+                            setPrice={setPrice}
+                            optional={optional}
+                            setOptional={setOptional}
+                        />
+                    )
                 }
             </section>
         </main>
