@@ -45,15 +45,28 @@ export function Home(){
         fetchOrders()
     },[])
 
-    async function deleteOrder(id:number){
+    function deleteOrder(id:number){
         try{
-            const response = await api.delete(`/orders/${id}`)
             Swal.fire({
-                icon:"success",
-                title:"Deletado com sucesso",
-                text:"O seu produto foi deletado!"
+                icon: 'warning',
+                title: 'Você tem certeza?',
+                text: "Impossível reverter após deletar produto!",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sim, deletar produto',
+                cancelButtonText: 'Não'
+            }).then(async(result) => {
+                if (result.isConfirmed) {
+                    const response = await api.delete(`/orders/${id}`)
+                    Swal.fire({
+                        icon: 'success',
+                        title:'Produto deletado!',
+                        text: 'Seu produto foi deletado com sucesso.',
+                    })
+                    fetchOrders()
+                }
             })
-            fetchOrders()
         }catch(error){
             console.error(error)
             Swal.fire({

@@ -7,26 +7,6 @@
       "id": 1
     },
     {
-      "description": "Gato de botas",
-      "price": "4213",
-      "optional": "Bom demais",
-      "id": 4
-    },
-    {
-      "description": "Goiaba",
-      "price": "192",
-      "optional": "Boa demais",
-      "status": 0,
-      "id": 6
-    },
-    {
-      "description": "Mesa de faturas",
-      "price": "91923921",
-      "optional": "Aff",
-      "status": 0,
-      "id": 7
-    },
-    {
       "description": "Consutoria",
       "price": "120",
       "optional": "Povão do povo galão",
