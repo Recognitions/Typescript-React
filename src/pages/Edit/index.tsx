@@ -1,11 +1,13 @@
 import { PageControl } from "../../components/PageControl"
 import {useState, useEffect, FormEvent} from "react"
+import { useParams } from "react-router-dom"
 import { Form } from "../../components/Form"
 import Swal from "sweetalert2"
 import { api } from "../../services/api"
 
 export function Edit(){
-    const url = (window.location.href).split("/")[4]
+    const params = useParams()
+    const id = params.id
     const [description, setDescription] = useState("")
     const [price, setPrice] = useState("")
     const [optional, setOptional] = useState("")
@@ -13,7 +15,7 @@ export function Edit(){
     useEffect(()=>{
         async function fetchOrder(){
             try{
-                const response = await api.get(`/orders/${url}`)
+                const response = await api.get(`/orders/${id}`)
                 setDescription(response.data.description)
                 setPrice(response.data.price)
                 setOptional(response.data.optional)
@@ -32,7 +34,7 @@ export function Edit(){
     async function editOrder(event: FormEvent){
         event.preventDefault()
         try{
-            const response = await api.put(`/orders/${url}`,{
+            const response = await api.put(`/orders/${id}`,{
                 description,price,optional
             })
             Swal.fire({
