@@ -4,6 +4,8 @@ import {PageControl} from "../../components/PageControl"
 import {useEffect,useState} from 'react'
 import {api} from '../../services/api'
 import {Order} from '../../@types/order'
+import {Link} from 'react-router-dom'
+import {MdDelete} from 'react-icons/md'
 
 export function Complete(){
 
@@ -27,6 +29,38 @@ export function Complete(){
     useEffect(()=>{
         fetchOrders()
     },[])
+
+    function deleteOrder(id:number){
+        try{
+            Swal.fire({
+                icon: 'warning',
+                title: 'Você tem certeza?',
+                text: "Impossível reverter após deletar produto!",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sim, deletar produto',
+                cancelButtonText: 'Não'
+            }).then(async(result) => {
+                if (result.isConfirmed) {
+                    const response = await api.delete(`/orders/${id}`)
+                    Swal.fire({
+                        icon: 'success',
+                        title:'Produto deletado!',
+                        text: 'Seu produto foi deletado com sucesso.',
+                    })
+                    fetchOrders()
+                }
+            })
+        }catch(error){
+            console.error(error)
+            Swal.fire({
+                icon:"error",
+                title:"Algo deu errado!",
+                text:"Impossível deletar produto."
+            })
+        }
+    }
 
     return(
         <main>
@@ -52,6 +86,9 @@ export function Complete(){
                                                 <td>{order.price}</td>
                                                 <td>{order.optional}</td>
                                                 <td className='button-area'>
+                                                    <Link onClick={()=>deleteOrder(order.id)} to="#" className="action-button delete-button">
+                                                        <MdDelete/>
+                                                    </Link>
                                                 </td>
                                             </tr>
                                         )
