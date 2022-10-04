@@ -6,6 +6,7 @@ import {Button} from "../../components/Button"
 import { api } from '../../services/api'
 import {FaEdit} from 'react-icons/fa'
 import {MdDelete} from 'react-icons/md'
+import {TbTruckDelivery} from 'react-icons/tb'
 import {Link} from 'react-router-dom'
 import {PageControl} from "../../components/PageControl"
 
@@ -105,6 +106,9 @@ export function Home(){
                                                     </Link>
                                                     <Link onClick={()=>deleteOrder(order.id)} to="#" className="action-button delete-button">
                                                         <MdDelete/>
+                                                    </Link>
+                                                    <Link to="#" className="action-button delivery-button">
+                                                        <TbTruckDelivery/>
                                                     </Link>
                                                 </td>
                                             </tr>
