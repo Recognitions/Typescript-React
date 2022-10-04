@@ -6,29 +6,11 @@ import {api} from '../../services/api'
 import {Order} from '../../@types/order'
 import {Link} from 'react-router-dom'
 import {MdDelete} from 'react-icons/md'
+import { useOrders } from "../../hooks/useOrders"
 
 export function Complete(){
 
-    const [orders, setOrders] = useState<Order[]>([])
-    const [isLoading, setIsLoading] = useState(true)
-
-    async function fetchOrders(){
-        try{
-            const response = await api.get('/orders')
-            setOrders(response.data)
-            setIsLoading(false)
-        }catch(error){
-            console.log(error)
-            Swal.fire({
-                icon:"error",
-                title:"Algo deu errado!",
-                text:"Impossível renderizar produtos."
-            })
-        }
-    }
-    useEffect(()=>{
-        fetchOrders()
-    },[])
+    const {orders,isLoading,fetchOrders} = useOrders()    
 
     function deleteOrder(id:number){
         try{

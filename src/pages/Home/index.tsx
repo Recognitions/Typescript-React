@@ -1,6 +1,5 @@
 import "./styles.css"
 import Swal from 'sweetalert2'
-import {useEffect,useState} from 'react'
 import {useNavigate} from "react-router-dom"
 import {Button} from "../../components/Button"
 import {api} from '../../services/api'
@@ -9,31 +8,12 @@ import {MdDelete} from 'react-icons/md'
 import {TbTruckDelivery} from 'react-icons/tb'
 import {Link} from 'react-router-dom'
 import {PageControl} from "../../components/PageControl"
-import {Order} from '../../@types/order'
+import {useOrders} from "../../hooks/useOrders"
+import {Order} from "../../@types/order"
 
 export function Home(){
     const navigate = useNavigate()
-
-    const [orders, setOrders] = useState<Order[]>([])
-    const [isLoading, setIsLoading] = useState(true)
-
-    async function fetchOrders(){
-        try{
-            const response = await api.get('/orders')
-            setOrders(response.data)
-            setIsLoading(false)
-        }catch(error){
-            console.log(error)
-            Swal.fire({
-                icon:"error",
-                title:"Algo deu errado!",
-                text:"Impossível renderizar produtos."
-            })
-        }
-    }
-    useEffect(()=>{
-        fetchOrders()
-    },[])
+    const {orders,isLoading,fetchOrders} = useOrders()
 
     function deleteOrder(id:number){
         try{
@@ -89,7 +69,7 @@ export function Home(){
 
     return(
         <main>
-            <PageControl title="Pedidos pendentes">
+            <PageControl title="Pedidos Pendentes">
                 <Button onClick={()=>navigate('cadastrar-pedidos')}>Cadastrar pedido</Button>
             </PageControl>
             
